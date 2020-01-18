@@ -80,8 +80,8 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #313131;
-  margin-top: 5vw;
-  font-size: 1.8vw;
+  margin-top: 2vw;
+  font-size: 1.6vw;
 }
 h1,
 h2,
@@ -89,10 +89,11 @@ button {
   font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
 }
 h1 {
-  font-size: 3.5vw;
+  font-size: 3vw;
 }
 h2 {
-  font-size: 3.2vw;
+  margin-block-start: 0;
+  font-size: 2.6vw;
 }
 .button-wrapper,
 .panel {
@@ -115,7 +116,7 @@ h2 {
 .points {
   font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
   color: #313131;
-  font-size: 2vw;
+  font-size: 1.8vw;
 }
 .gauge-background {
   height: 20px;
@@ -142,8 +143,8 @@ button {
   color: #313131;
   background: #dde0eb;
   font-family: "Vesper Libre", serif;
-  font-size: 2.3vw;
-  line-height: 3vw;
+  font-size: 2vw;
+  line-height: 2.6vw;
   border-radius: 1vw;
   width: 37vw;
   padding: 0px;
@@ -158,20 +159,17 @@ button[disabled] {
   padding-top: 1vw;
   color: #747474;
 }
-.option {
-  padding: 0.05vw;
-}
 .option-input {
   width: 3vw;
   height: 2vw;
   font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
   color: #313131;
-  font-size: 2vw;
+  font-size: 1.8vw;
   padding: 0.5vw;
   margin-left: 1.5vw;
   border-radius: 0.5vw;
 }
 .learn-more {
-  font-size: 1.4vw;
+  font-size: 1.2vw;
 }
 </style>
