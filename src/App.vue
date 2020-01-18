@@ -6,6 +6,7 @@
       v-bind:options="shuffledQuestions[currentPage].options"
       v-bind:question="shuffledQuestions[currentPage].question"
       v-bind:points="shuffledQuestions[currentPage].points"
+      v-bind:previousResults="pageResults[currentPage] || {}"
       @ready="readyNext"
       @notReady="disableNext"
     />

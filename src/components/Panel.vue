@@ -11,7 +11,7 @@
         id="myNumber"
         v-on:input="calculateCount($event.target,$event.target.value,option.trait)"
         v-bind:max="points"
-        v-bind:value="results[option.trait] ? results[option.trait] : 0"
+        v-bind:value="results[option.trait] ? results[option.trait] : previousResults[option.trait] ? previousResults[option.trait] : 0"
         class="option-input"
         type="number"
         min="0"
@@ -56,6 +56,10 @@ export default {
     type: {
       default: "",
       type: String
+    },
+    previousResults: {
+      default: () => {},
+      type: Object
     }
   },
   data: function() {
@@ -69,13 +73,21 @@ export default {
       this.count = n;
     },
     options(n) {
-      const freshSlate = {};
-      n.forEach(option => {
-        freshSlate[option.trait] = 0;
-      });
       this.count = this.points;
-      this.results = freshSlate;
-      this.$emit("notReady");
+      if (!Object.keys(this.previousResults).length) {
+        const freshSlate = {};
+        n.forEach(option => {
+          freshSlate[option.trait] = 0;
+        });
+        this.results = freshSlate;
+        this.$emit("notReady");
+      } else {
+        this.results = { ...this.previousResults };
+        this.$emit("ready", {
+          results: { ...this.previousResults },
+          page: this.page
+        });
+      }
     }
   },
   methods: {
