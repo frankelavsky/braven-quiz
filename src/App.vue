@@ -13,6 +13,11 @@
         <button v-on:click="currentPage--">Back</button>
         <button v-on:click="currentPage++">Next</button>
       </div>
+      <a
+        class="learn-more"
+        href="https://bravengames.wordpress.com/"
+        target="blank"
+      >Learn more about Braven, the Tabletop Roleplaying Game</a>
     </div>
   </div>
 </template>
@@ -74,6 +79,9 @@ h2 {
   margin: 3vw 10vw;
   padding: 2vw;
 }
+.button-wrapper {
+  margin-bottom: 0;
+}
 .panel {
   background: #eeeeee;
   border-radius: 2vw;
@@ -126,7 +134,7 @@ button {
   padding: 0.05vw;
 }
 .option-input {
-  width: 2vw;
+  width: 3vw;
   height: 2vw;
   font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
   color: #313131;
@@ -134,5 +142,8 @@ button {
   padding: 0.5vw;
   margin-left: 1.5vw;
   border-radius: 0.5vw;
+}
+.learn-more {
+  font-size: 1.4vw;
 }
 </style>
