@@ -73,6 +73,7 @@ export default {
       n.forEach(option => {
         freshSlate[option.trait] = 0;
       });
+      this.count = this.points;
       this.results = freshSlate;
     }
   },
