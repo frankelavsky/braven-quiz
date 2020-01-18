@@ -6,12 +6,17 @@
       v-bind:options="shuffledQuestions[currentPage].options"
       v-bind:question="shuffledQuestions[currentPage].question"
       v-bind:points="shuffledQuestions[currentPage].points"
+      @ready="readyNext"
+      @notReady="disableNext"
     />
 
     <div class="footer">
       <div class="button-wrapper">
-        <button v-on:click="currentPage--">Back</button>
-        <button v-on:click="currentPage++">Next</button>
+        <button v-on:click="currentPage--" v-bind:disabled="!currentPage">Back</button>
+        <button
+          v-on:click="currentPage++"
+          v-bind:disabled="!(currentPage < shuffledQuestions.length && nextReady)"
+        >Next</button>
       </div>
       <a
         class="learn-more"
@@ -34,7 +39,9 @@ export default {
   data() {
     return {
       shuffledQuestions: [],
-      currentPage: 0
+      currentPage: 0,
+      pageResults: {},
+      nextReady: false
     };
   },
   async created() {
@@ -49,6 +56,18 @@ export default {
       shuffle(question.options);
     });
     this.shuffledQuestions = shuffle(Questions);
+  },
+  methods: {
+    readyNext(ready) {
+      this.pageResults[ready.page] = { ...ready.results };
+      // eslint-disable-next-line no-console
+      console.log("results", this.pageResults);
+      this.nextReady = true;
+    },
+    disableNext() {
+      // disable next button
+      this.nextReady = false;
+    }
   }
 };
 </script>
@@ -81,10 +100,12 @@ h2 {
 }
 .button-wrapper {
   margin-bottom: 0;
+  padding-bottom: 0;
 }
 .panel {
   background: #eeeeee;
   border-radius: 2vw;
+  margin-bottom: 5vw;
 }
 .remaining-points {
   padding-bottom: 1vw;
@@ -116,15 +137,21 @@ h2 {
   margin: 0 auto;
 }
 button {
+  cursor: pointer;
   color: #313131;
   background: #dde0eb;
   font-family: "Vesper Libre", serif;
   font-size: 2.3vw;
   line-height: 3vw;
   border-radius: 1vw;
-  width: 37.5vw;
+  width: 37vw;
   padding: 0px;
   padding-top: 0.65vw;
+}
+button:disabled,
+button[disabled] {
+  color: #6b6b6b;
+  background: #eeeeee;
 }
 .progress {
   padding-top: 1vw;

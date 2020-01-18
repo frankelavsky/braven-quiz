@@ -75,6 +75,7 @@ export default {
       });
       this.count = this.points;
       this.results = freshSlate;
+      this.$emit("notReady");
     }
   },
   methods: {
@@ -95,6 +96,11 @@ export default {
         remaining -= this.results[key];
       });
       this.count = remaining;
+      if (this.count === 0) {
+        // eslint-disable-next-line no-console
+        console.log("zero!", { ...this.results }, this.page);
+        this.$emit("ready", { results: { ...this.results }, page: this.page });
+      }
     }
   }
 };
