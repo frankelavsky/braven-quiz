@@ -1,0 +1,674 @@
+[
+  {
+    "question": "I would assassinate an evil ruler if...",
+    "type": "multi",
+    "points": 5,
+    "id": 0,
+    "options": [
+      {
+        "text": "They destroyed our knowledge and brought a dark age upon us.",
+        "trait": "I"
+      },
+      {
+        "text": "We are starving and cannot eat.",
+        "trait": "C"
+      },
+      {
+        "text": "They have hurt those that I love dearly.",
+        "trait": "H"
+      },
+      {
+        "text": "They have committed crimes and justice must be served.",
+        "trait": "R"
+      },
+      {
+        "text": "We cannot leave and are slaves to this land.",
+        "trait": "S"
+      },
+      {
+        "text": "Doing so would allow us to recover and rebuild.",
+        "trait": "D"
+      }
+    ]
+  },
+  {
+    "question": "I would not assassinate an evil ruler if killing them would...",
+    "type": "multi",
+    "points": 5,
+    "id": 1,
+    "options": [
+      {
+        "text": "Bring about a dark age of ignorance, poverty, and famine.",
+        "trait": "I"
+      },
+      {
+        "text": "Only bring violent backlash and revenge that solves nothing.",
+        "trait": "C"
+      },
+      {
+        "text": "Cause the death of all those I care about.",
+        "trait": "H"
+      },
+      {
+        "text": "Be a lawless act that destroys the people's faith in justice.",
+        "trait": "R"
+      },
+      {
+        "text": "Mean that you alone had to clean up the mess and govern through the aftermath.",
+        "trait": "S"
+      },
+      {
+        "text": "Only cause another evil to rise to power.",
+        "trait": "D"
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 2,
+    "question": "You are the ruler of a land that has seen a prosperous harvest. You can only do one:",
+    "options": [
+      {
+        "text": "Trade the excess harvest to research new technology.",
+        "trait": "I"
+      },
+      {
+        "text": "Save the excess harvest for a potential, future famine.",
+        "trait": "C"
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 3,
+    "question": "You are the ruler of a land. Your government is:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "A democracy. You let the people discuss what they need in an open forum before coming to you. You will do what they ask to the best of your ability."
+      },
+      {
+        "trait": "R",
+        "text": "A republic. Sometimes you know better and will decide what is best, even if your subjects carefully deliberate before asking you."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 4,
+    "question": "You are the ruler of a land. You are faced with a difficult strategic problem:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "You can't anticipate everything."
+      },
+      {
+        "trait": "D",
+        "text": "The devil is in the details."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 5,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "If something isn't broken, don't fix it."
+      },
+      {
+        "trait": "I",
+        "text": "Nothing is perfect."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 6,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "Don't reinvent the wheel."
+      },
+      {
+        "trait": "I",
+        "text": "Every failure is a lesson learned."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 7,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "Gambling is a waste. The house always wins."
+      },
+      {
+        "trait": "I",
+        "text": "You have to take risks if you want rewards."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 8,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "Quality of life was better when things were simpler."
+      },
+      {
+        "trait": "I",
+        "text": "Quality of life has generally gotten better through time."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 9,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "Passive profit is a good investment."
+      },
+      {
+        "trait": "I",
+        "text": "The world would be better if all work was automated."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 10,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "Waste is rarely considered but critically important."
+      },
+      {
+        "trait": "I",
+        "text": "You need to break an egg to make an omelette."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 11,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "The best ideas are tried and true."
+      },
+      {
+        "trait": "I",
+        "text": "The best ideas are still undiscovered."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 12,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "You can really feel the mood of others around you."
+      },
+      {
+        "trait": "R",
+        "text": "Sometimes your intensity makes enemies out of strangers."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 13,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "It is good to thank others if they help you."
+      },
+      {
+        "trait": "R",
+        "text": "If someone is doing something wrong, they should know about it."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 14,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "Persuasion is powerful."
+      },
+      {
+        "trait": "R",
+        "text": "Coercion is powerful."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 15,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "I can easily code switch in different environments."
+      },
+      {
+        "trait": "R",
+        "text": "I try to be the same person with the same goals."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 16,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "Healing is more important than punishment."
+      },
+      {
+        "trait": "R",
+        "text": "I am driven towards something (objectivity, faith, truth, knowledge, goals)."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 17,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "Decisions that impact others should involve their input."
+      },
+      {
+        "trait": "R",
+        "text": "To each their own."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 18,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "It is important that guests feel comfortable."
+      },
+      {
+        "trait": "R",
+        "text": "It is important that others know your point of view."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 19,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "You like it when someone else suggests things to do."
+      },
+      {
+        "trait": "D",
+        "text": "You like to make to-do lists, even if you don't get everything done."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 20,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "You like to go with the flow."
+      },
+      {
+        "trait": "D",
+        "text": "You find peace when there is closure."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 21,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "You like to start new things."
+      },
+      {
+        "trait": "D",
+        "text": "You like to finish things you start."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 22,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "Too much strategy is a waste of time."
+      },
+      {
+        "trait": "D",
+        "text": "A strategy is still good to have up front, even if things change."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 23,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "Opportunities are everywhere if you just look closely."
+      },
+      {
+        "trait": "D",
+        "text": "Learning how to navigate systems and structures can set you free."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 24,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "Mobility is the greatest privilege."
+      },
+      {
+        "trait": "D",
+        "text": "Litigiousness is the greatest privilege."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 25,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "I fear being trapped."
+      },
+      {
+        "trait": "D",
+        "text": "I fear getting lost."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 26,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "I",
+        "text": "Magic has great potential."
+      },
+      {
+        "trait": "C",
+        "text": "Magic is not trustworthy."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 27,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "I",
+        "text": "I seek glory"
+      },
+      {
+        "trait": "C",
+        "text": "I seek contentment"
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 28,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "Help the ones you love."
+      },
+      {
+        "trait": "R",
+        "text": "Do what you believe you must."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 29,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "I don't like being alone."
+      },
+      {
+        "trait": "R",
+        "text": "I don't like being wrong."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 30,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "An unexpected reward is most satisfying."
+      },
+      {
+        "trait": "D",
+        "text": "An earned reward is most satisfying."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 31,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "Opportunity is the key to success."
+      },
+      {
+        "trait": "D",
+        "text": "Time is the key to success."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 32,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "C",
+        "text": "Change comes from within oneself."
+      },
+      {
+        "trait": "I",
+        "text": "Change comes from new experience."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 33,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "Giving unwanted criticism can cause problems."
+      },
+      {
+        "trait": "R",
+        "text": "Apologizing too much can cause problems."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 34,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "I fear being tied down."
+      },
+      {
+        "trait": "D",
+        "text": "I fear having no future."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 35,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "I want others to feel understood and validated."
+      },
+      {
+        "trait": "R",
+        "text": "I want bad people to stop being bad."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 36,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "H",
+        "text": "I try to meet people halfway."
+      },
+      {
+        "trait": "R",
+        "text": "I am not afraid to stand up and speak out."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 37,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "It is smarter to take initiative."
+      },
+      {
+        "trait": "D",
+        "text": "It is smarter to be thorough."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 38,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "S",
+        "text": "Sitting still drives me insane."
+      },
+      {
+        "trait": "D",
+        "text": "Having unfinished projects drives me insane."
+      }
+    ]
+  },
+  {
+    "type": "duel",
+    "points": 3,
+    "id": 39,
+    "question": "Rate how much you agree with these statements:",
+    "options": [
+      {
+        "trait": "I",
+        "text": "Valuable resources should be shared with those who need them."
+      },
+      {
+        "trait": "C",
+        "text": "Valuable resources must be kept from those who will abuse them."
+      }
+    ]
+  }
+]

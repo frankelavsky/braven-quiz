@@ -1,0 +1,34 @@
+[
+  {
+    "I": {
+      "High": "You are gifted at thinking out of the box no matter the risks involved. You're courageous when facing the unknown and get excited imagining possibilities for yourself and the world around you. You think freely and have a generous mind. Ideas are tantamount to you.",
+      "Moderate": "You have great ideas with a sprinkle of practicality thrown in. You have learned from experience that completely letting loose can sometimes be disastrous. You've got a good sense of how to take a revolutionary idea and actually make it attainable.",
+      "Low": "Take care of yourself if you find that you spend too much time reigning in the rest of your party. You don't need to play the worrier or the parent all of the time (unless you're actually into that sort of thing). You and your friends will be happier if you remember to thank each other for your unique strengths."
+    },
+    "C": {
+      "High": "You are excellent at evaluating risk in a situation and insisting on not over-doing anything. Your straightforwardness is both necessary and life-saving in every party. You tirelessly tackle tasks requiring great skill and are all the while protective of those that matter most to you.",
+      "Moderate": "You dance with danger on occasion, but still have a solid sense of which ideas would be dangerous plays. Your thoughtful approach balances both work and fun and you can use this wisdom to the advantage of your group. You balance risks and rewards well.",
+      "Low": "Make sure that your ideas aren't causing your party to stress out. Sometimes pushing boundaries can make people uncomfortable. Make sure you are discussing your ideas with your party before executing them. Find common consent and compromise if needed. Your friends are more important than your ideas."
+    },
+    "R": {
+      "High": "You stand up for what you believe in and you are not afraid to speak your mind. You are the definition of a strong personality. Even though you can easily make enemies with your attitude, you also inspire, protect, and enable those who are on your side.",
+      "Moderate": "You have a mix of pure grit and a touch of compassion. You've learned through experience that sharing responsibility is smarter and safer, which makes you both a strong leader but also teachable and reasonable. Despite being such a competitive force, you are still a solid team-player.",
+      "Low": "Don't be afraid to stand up for what you believe in and clearly state when you do not consent to something. You should make sure to respect yourself and know that you also deserve respect from others too. You have a tendency to martyr yourself for others, but let your friends love on you too."
+    },
+    "H": {
+      "High": "An absolute lover, you have a glowing heart for those around you. You remind others that games aren't just about killing. You are amazing at making people feel happy, comfortable, and inspired. You are emotionally intelligent, sensitive, vulnerable, and forgiving. The world needs more people like you.",
+      "Moderate": "You're a passionate individual - you've struck a balance between a love of others and a bit of ferocity too. You stand up for what is right if nobody else will but you also respect and work well with strong and difficult characters. Your mediated approach will serve your party well.",
+      "Low": "Don't forget to listen to other members in your group and make sure to get consent before giving criticism or feedback. Also, make sure you give them a chance to shine too. Taking charge is good, but it can make your friends feel forgotten or bulldozed. Protect your friendships and ask for their feedback often."
+    },
+    "S": {
+      "High": "Pure luck, pure speed, pure skill. You are fast and fabulous and a master of adapting to change. Problems appear? No sweat, you can find a way out in no time. You are constantly interesting and impossible to predict, which can make you hilarious, shocking, and chock full of different tricks.",
+      "Moderate": "You're adaptable but also willing to deliberate, a rare combination for sure. You know when something can be swiftly solved and when something actually requires a bit of time in the oven. This dangerous combination has given you mastery over a breadth of useful skills.",
+      "Low": "You sometimes plan so much you fail to begin. Don't forget to go with the flow every now and then. Pick your battles, start somewhere. If you always insist on over-strategizing, you can make play feel like work to your friends. (Don't do that.) Plus, sometimes letting loose can actually be fun."
+    },
+    "D": {
+      "High": "You're dependable, calculated, and can whip up strategies like they are nothing. You are an invaluable member of a party because you remind people to focus on the story/the plan/the quest, and actually finish what was started. You not only remind your friends to slow down and breathe, but also get their shit together.",
+      "Moderate": "Clever with a touch of wits, you're the shining example of someone who sees things through. You have enough cunning to think several steps ahead, enough wisdom to know that things don't always go to plan, and still enough grit to get the ball rolling despite all that.",
+      "Low": "You have a tendency to get bored if you lack stimulation, but your friends might perceive this as a loss of loyalty. Just be clear to speak your needs to them so they can understand where you are coming from. And you know, there can be real satisfaction finishing something you've started."
+    }
+  }
+]
