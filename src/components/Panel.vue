@@ -73,8 +73,8 @@ export default {
       this.count = n;
     },
     options(n) {
-      this.count = this.points;
       if (!Object.keys(this.previousResults).length) {
+        this.count = this.points;
         const freshSlate = {};
         n.forEach(option => {
           freshSlate[option.trait] = 0;
@@ -82,6 +82,7 @@ export default {
         this.results = freshSlate;
         this.$emit("notReady");
       } else {
+        this.count = 0;
         this.results = { ...this.previousResults };
         this.$emit("ready", {
           results: { ...this.previousResults },
