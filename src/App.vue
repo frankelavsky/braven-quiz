@@ -9,6 +9,7 @@
       v-bind:previousResults="pageResults[currentPage] || {}"
       @ready="readyNext"
       @notReady="disableNext"
+      @submitToNext="next"
     />
 
     <div class="footer">
@@ -16,7 +17,7 @@
         <button v-on:click="currentPage--" v-bind:disabled="!currentPage">Back</button>
         <button
           v-on:click="currentPage++"
-          v-bind:disabled="!(currentPage < shuffledQuestions.length && nextReady)"
+          v-bind:disabled="!(currentPage < shuffledQuestions.length-1 && nextReady)"
         >Next</button>
       </div>
       <a
@@ -61,13 +62,19 @@ export default {
   methods: {
     readyNext(ready) {
       this.pageResults[ready.page] = { ...ready.results };
-      // eslint-disable-next-line no-console
-      console.log("results", this.pageResults);
       this.nextReady = true;
     },
     disableNext() {
       // disable next button
       this.nextReady = false;
+    },
+    next() {
+      if (
+        this.currentPage < this.shuffledQuestions.length - 1 &&
+        this.nextReady
+      ) {
+        this.currentPage++;
+      }
     }
   }
 };

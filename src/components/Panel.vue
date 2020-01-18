@@ -5,18 +5,20 @@
       (Spend these points among the options:
       <span class="points">{{" " + count}}</span>).
     </div>
-    <div v-for="option in options" v-bind:key="option.trait" class="option">
-      <span class="option-text">{{option.text}}</span>
-      <input
-        id="myNumber"
-        v-on:input="calculateCount($event.target,$event.target.value,option.trait)"
-        v-bind:max="points"
-        v-bind:value="results[option.trait] ? results[option.trait] : previousResults[option.trait] ? previousResults[option.trait] : 0"
-        class="option-input"
-        type="number"
-        min="0"
-      />
-    </div>
+    <form v-on:submit.prevent="submit()">
+      <input type="submit" style="display: none" />
+      <div v-for="option in options" v-bind:key="option.trait" class="option">
+        <span class="option-text">{{option.text}}</span>
+        <input
+          v-on:input="calculateCount($event.target,$event.target.value,option.trait)"
+          v-bind:max="points"
+          v-bind:value="results[option.trait] ? results[option.trait] : previousResults[option.trait] ? previousResults[option.trait] : 0"
+          class="option-input"
+          type="number"
+          min="0"
+        />
+      </div>
+    </form>
     <div class="progress">
       <span>({{Math.round((page / totalPages)*1000)/10}}% finished with the quiz.)</span>
       <div class="gauge-background">
@@ -73,10 +75,23 @@ export default {
       this.count = n;
     },
     options(n) {
+      this.setFreshSlate(n);
+    }
+  },
+  created() {
+    // eslint-disable-next-line no-console
+    console.log("we have loaded", this.results, this.options);
+    this.setFreshSlate(this.options);
+  },
+  methods: {
+    submit() {
+      this.$emit("submitToNext");
+    },
+    setFreshSlate(optionsArray) {
       if (!Object.keys(this.previousResults).length) {
         this.count = this.points;
         const freshSlate = {};
-        n.forEach(option => {
+        optionsArray.forEach(option => {
           freshSlate[option.trait] = 0;
         });
         this.results = freshSlate;
@@ -89,9 +104,7 @@ export default {
           page: this.page
         });
       }
-    }
-  },
-  methods: {
+    },
     calculateCount(element, inputValue, trait) {
       let value = inputValue;
       if (value < 0) {
@@ -102,16 +115,12 @@ export default {
         element.value = this.results[trait] + this.count;
       }
       this.results[trait] = +value;
-      // eslint-disable-next-line no-console
-      // console.log(this.results);
       let remaining = this.points;
       Object.keys(this.results).forEach(key => {
         remaining -= this.results[key];
       });
       this.count = remaining;
       if (this.count === 0) {
-        // eslint-disable-next-line no-console
-        console.log("zero!", { ...this.results }, this.page);
         this.$emit("ready", { results: { ...this.results }, page: this.page });
       }
     }
