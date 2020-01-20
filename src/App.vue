@@ -38,7 +38,7 @@
           target="_blank"
         >The code for this quiz is open source.</a>
         <br />Like this?
-        <a href="paypal.me/FrankElavsky" target="_blank">Buy me a coffee</a> or
+        <a href="https://paypal.me/FrankElavsky" target="_blank">Buy me a coffee</a> or
         <a href="https://bravengames.wordpress.com/" target="_blank">follow our blog</a> to learn more about Braven, our Tabletop Roleplaying Game.
       </div>
     </div>
