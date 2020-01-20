@@ -31,11 +31,16 @@
           v-bind:disabled="!nextReady"
         >{{currentPage === shuffledQuestions.length-1 ? "SUBMIT" : "Next"}}</button>
       </div>
-      <a
-        class="learn-more"
-        href="https://bravengames.wordpress.com/"
-        target="_blank"
-      >Learn more about Braven, the Tabletop Roleplaying Game</a>
+      <div class="learn-more">
+        We don't steal, store, or sell any data when you visit us (and never will).
+        <a
+          href="https://github.com/frankelavsky/braven-quiz"
+          target="_blank"
+        >The code for this quiz is open source.</a>
+        <br />Like this?
+        <a href="paypal.me/FrankElavsky" target="_blank">Buy me a coffee</a> or
+        <a href="https://bravengames.wordpress.com/" target="_blank">follow our blog</a> to learn more about Braven, our Tabletop Roleplaying Game.
+      </div>
     </div>
   </div>
 </template>
@@ -57,26 +62,27 @@ export default {
       nextReady: false,
       resultsReady: false,
       aggregatedResults: {},
-      pageSource:
-        window.location.protocol +
-        window.location.host +
-        window.location.pathname
+      pageSource: "/" // window.location.protocol + window.location.host + window.location.pathname
     };
   },
   async created() {
-    function shuffle(a) {
+    if (window.location.search) {
+      this.parseURLParams();
+    } else {
+      Questions.forEach(question => {
+        this.shuffle(question.options);
+      });
+      this.shuffledQuestions = this.shuffle(Questions);
+    }
+  },
+  methods: {
+    shuffle(a) {
       for (let i = a.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [a[i], a[j]] = [a[j], a[i]];
       }
       return a;
-    }
-    Questions.forEach(question => {
-      shuffle(question.options);
-    });
-    this.shuffledQuestions = shuffle(Questions);
-  },
-  methods: {
+    },
     readyNext(ready) {
       this.pageResults[ready.page] = { ...ready.results };
       this.nextReady = true;
@@ -86,13 +92,6 @@ export default {
       this.nextReady = false;
     },
     next() {
-      // eslint-disable-next-line no-console
-      console.log(
-        "current",
-        this.currentPage,
-        "end",
-        this.shuffledQuestions.length - 1
-      );
       if (
         this.currentPage < this.shuffledQuestions.length - 1 &&
         this.nextReady
@@ -105,7 +104,6 @@ export default {
         const userConfirmation = this.warnUserNoGoingBack();
         if (userConfirmation) {
           this.createAggregatedResults();
-          this.resultsReady = true;
         }
       }
     },
@@ -129,7 +127,9 @@ export default {
           newResults[trait] += this.pageResults[key][trait];
         });
       });
+      this.resultsReady = true;
       this.aggregatedResults = newResults;
+      this.prepURLParams();
       // eslint-disable-next-line no-console
       console.log("PREPPED results", this.aggregatedResults);
     },
@@ -137,6 +137,38 @@ export default {
       return confirm(
         "You are about to view your results.\n\nYou will not be able to edit your responses once you proceed."
       );
+    },
+    prepURLParams() {
+      let params = "?";
+      let count = 0;
+      Object.keys(this.aggregatedResults).forEach(key => {
+        params += count ? "&" : "";
+        params += key + "=" + this.aggregatedResults[key];
+        count++;
+      });
+      window.history.pushState({}, document.title, params);
+    },
+    parseURLParams() {
+      const url = new URL(window.location.href);
+      const entries = [...url.searchParams.entries()];
+      let totalPoints = 0;
+      Questions.forEach(question => {
+        totalPoints += question.points;
+      });
+      let entryPoints = 0;
+      const urlResults = {};
+      entries.forEach(entry => {
+        entryPoints += +entry[1];
+        urlResults[entry[0]] = +entry[1];
+      });
+      // eslint-disable-next-line no-console
+      console.log("entrypoints now ", entryPoints, totalPoints, urlResults);
+      if (entryPoints !== totalPoints) {
+        window.location.search = "";
+      } else {
+        this.resultsReady = true;
+        this.aggregatedResults = urlResults;
+      }
     }
   }
 };
@@ -241,5 +273,6 @@ button[disabled] {
 }
 .learn-more {
   font-size: 1.2vw;
+  padding: 2vw 10vw 0vw 10vw;
 }
 </style>
