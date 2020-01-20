@@ -1,6 +1,8 @@
 <template>
   <div id="App">
+    <div v-if="resultsReady"></div>
     <Panel
+      v-else
       v-bind:page="currentPage"
       v-bind:totalPages="shuffledQuestions.length"
       v-bind:options="shuffledQuestions[currentPage].options"
@@ -13,17 +15,26 @@
     />
 
     <div class="footer">
-      <div class="button-wrapper">
+      <div v-if="resultsReady" class="button-wrapper">
+        <span>
+          Not the results you are looking for?
+          <a
+            v-bind:href="pageSource"
+            target="_blank"
+          >Take the test</a>
+        </span>
+      </div>
+      <div v-else class="button-wrapper">
         <button v-on:click="currentPage--" v-bind:disabled="!currentPage">Back</button>
         <button
-          v-on:click="currentPage++"
-          v-bind:disabled="!(currentPage < shuffledQuestions.length-1 && nextReady)"
-        >Next</button>
+          v-on:click="next"
+          v-bind:disabled="!nextReady"
+        >{{currentPage === shuffledQuestions.length-1 ? "SUBMIT" : "Next"}}</button>
       </div>
       <a
         class="learn-more"
         href="https://bravengames.wordpress.com/"
-        target="blank"
+        target="_blank"
       >Learn more about Braven, the Tabletop Roleplaying Game</a>
     </div>
   </div>
@@ -43,7 +54,13 @@ export default {
       shuffledQuestions: [],
       currentPage: 0,
       pageResults: {},
-      nextReady: false
+      nextReady: false,
+      resultsReady: false,
+      aggregatedResults: {},
+      pageSource:
+        window.location.protocol +
+        window.location.host +
+        window.location.pathname
     };
   },
   async created() {
@@ -69,12 +86,57 @@ export default {
       this.nextReady = false;
     },
     next() {
+      // eslint-disable-next-line no-console
+      console.log(
+        "current",
+        this.currentPage,
+        "end",
+        this.shuffledQuestions.length - 1
+      );
       if (
         this.currentPage < this.shuffledQuestions.length - 1 &&
         this.nextReady
       ) {
         this.currentPage++;
+      } else if (
+        this.nextReady &&
+        this.currentPage === this.shuffledQuestions.length - 1
+      ) {
+        const userConfirmation = this.warnUserNoGoingBack();
+        if (userConfirmation) {
+          this.createAggregatedResults();
+          this.resultsReady = true;
+        }
       }
+    },
+    createAggregatedResults() {
+      const newResults = {
+        I: 0,
+        C: 0,
+        H: 0,
+        R: 0,
+        S: 0,
+        D: 0
+        // I: 11,
+        // C: 2,
+        // H: 9,
+        // R: 6,
+        // S: 6,
+        // D: 6
+      };
+      Object.keys(this.pageResults).forEach(key => {
+        Object.keys(this.pageResults[key]).forEach(trait => {
+          newResults[trait] += this.pageResults[key][trait];
+        });
+      });
+      this.aggregatedResults = newResults;
+      // eslint-disable-next-line no-console
+      console.log("PREPPED results", this.aggregatedResults);
+    },
+    warnUserNoGoingBack() {
+      return confirm(
+        "You are about to view your results.\n\nYou will not be able to edit your responses once you proceed."
+      );
     }
   }
 };
@@ -140,6 +202,7 @@ h2 {
   border-radius: 10px 0px 0px 10px;
 }
 .footer {
+  width: 100%;
   position: fixed;
   bottom: 0;
   text-align: center;
