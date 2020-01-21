@@ -1,19 +1,26 @@
 <template>
   <div id="App">
-    <div v-if="resultsReady"></div>
-    <Panel
-      v-else
-      v-bind:page="currentPage"
-      v-bind:totalPages="shuffledQuestions.length"
-      v-bind:options="shuffledQuestions[currentPage].options"
-      v-bind:question="shuffledQuestions[currentPage].question"
-      v-bind:points="shuffledQuestions[currentPage].points"
-      v-bind:previousResults="pageResults[currentPage] || {}"
-      @ready="readyNext"
-      @notReady="disableNext"
-      @submitToNext="next"
-    />
-
+    <h1>Braven's TTRPG Personality Quiz</h1>
+    <p
+      class="description"
+    >Wouldn't it be awesome to know what kind of personality you have when you play a tabletop role-playing game? This quiz can help you learn more about yourself and your teammates, so that you can become an amazing party together.</p>
+    <div class="main-content-wrapper">
+      <div v-if="resultsReady">
+        <Results v-bind:results="aggregatedResults"></Results>
+      </div>
+      <Panel
+        v-else
+        v-bind:page="currentPage"
+        v-bind:totalPages="shuffledQuestions.length"
+        v-bind:options="shuffledQuestions[currentPage].options"
+        v-bind:question="shuffledQuestions[currentPage].question"
+        v-bind:points="shuffledQuestions[currentPage].points"
+        v-bind:previousResults="pageResults[currentPage] || {}"
+        @ready="readyNext"
+        @notReady="disableNext"
+        @submitToNext="next"
+      />
+    </div>
     <div class="footer">
       <div v-if="resultsReady" class="button-wrapper">
         <span>
@@ -47,12 +54,14 @@
 
 <script>
 import Panel from "./components/Panel.vue";
+import Results from "./components/Results.vue";
 import Questions from "./assets/questions.json";
 
 export default {
   name: "App",
   components: {
-    Panel
+    Panel,
+    Results
   },
   data() {
     return {
@@ -186,36 +195,58 @@ export default {
 }
 h1,
 h2,
-button {
+button,
+.option-iniput,
+.points {
   font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 900;
+}
+h3 {
+  font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
+  font-weight: 300;
+  margin-block-start: 1vw;
 }
 h1 {
   font-size: 3vw;
 }
 h2 {
-  margin-block-start: 0;
   font-size: 2.6vw;
 }
-.button-wrapper,
-.panel {
+h2,
+p {
+  margin-block-start: 0;
+}
+h1,
+h2,
+h3,
+p {
+  margin-block-end: 0;
+}
+.description {
+  padding: 0vw 10vw 0vw 10vw;
+}
+.panel,
+.results {
   margin: 3vw 10vw;
   padding: 2vw;
 }
 .button-wrapper {
-  margin-bottom: 0;
-  padding-bottom: 0;
+  margin: 0 10vw;
+  padding: 1vw 2vw;
 }
-.panel {
+.main-content-wrapper {
+  margin-bottom: 10vw;
+}
+.panel,
+.results {
   background: #eeeeee;
   border-radius: 2vw;
-  margin-bottom: 5vw;
 }
 .remaining-points {
   padding-bottom: 1vw;
   color: #747474;
 }
 .points {
-  font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
   color: #313131;
   font-size: 1.8vw;
 }
@@ -239,11 +270,13 @@ h2 {
   bottom: 0;
   text-align: center;
   margin: 0 auto;
+  background: #313131e0;
+  color: white;
 }
 button {
   cursor: pointer;
-  color: #313131;
-  background: #dde0eb;
+  color: #ffffff;
+  background: #0f63ff;
   font-family: "Vesper Libre", serif;
   font-size: 2vw;
   line-height: 2.6vw;
@@ -259,20 +292,38 @@ button[disabled] {
 }
 .progress {
   padding-top: 1vw;
+}
+.bar {
   color: #747474;
 }
 .option-input {
   width: 3vw;
   height: 2vw;
-  font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
   color: #313131;
   font-size: 1.8vw;
-  padding: 0.5vw;
+  padding: 0.2vw 0.5vw;
   margin-left: 1.5vw;
   border-radius: 0.5vw;
 }
 .learn-more {
+  padding: 0vw 10vw;
+}
+.description,
+.learn-more,
+p {
+  line-height: 1.8vw;
   font-size: 1.2vw;
-  padding: 2vw 10vw 0vw 10vw;
+}
+.trait-explanation {
+  padding: 1vw 0vw 1vw 0vw;
+}
+.breakdown-heading {
+  padding-top: 2vw;
+}
+a {
+  color: #00c3ff;
+}
+a:visited {
+  color: #ff97ee;
 }
 </style>
