@@ -1,0 +1,50 @@
+{
+  "IHD": {
+    "Title": "Innovative, Harmonious, and Deliberate",
+    "Description": "A savior-like figure. You have a clever mind, open heart, and give solid advice. You seem wise beyond your years.",
+    "SiblingType": ["CHD", "IRD", "IHS"],
+    "Examples": "In Braven, the Mender persona is an IHD who chose Wits as their Prime Stat, replacing the stat Prestige with Wits for Charisma. Alternatively, the Scholar persona is also an IHD but they chose Erudition as their Prime Stat."
+  },
+  "IHS": {
+    "Title": "Innovative, Harmonious, and Spontaneous",
+    "Description": "A character that fills any room. Your personality is almost as big as your sense of humor. You're loved by all.",
+    "SiblingType": ["CHS", "IRS", "IHD"],
+    "Examples": "In Braven, the Champion persona is an IHS who chose Physique as their Prime Stat. Alternatively, the Mystic persona is also an IHS but they chose Nerve as their Prime Stat."
+  },
+  "CHD": {
+    "Title": "Conventional, Harmonious, and Deliberate",
+    "Description": "The foundation beneath us all. You are steady yet full of passion and your loyalty never wavers.",
+    "SiblingType": ["IHD", "CRD", "CHS"],
+    "Examples": "In Braven, the Tank persona is a CHD who chose Wellness as their Prime Stat."
+  },
+  "CHS": {
+    "Title": "Conventional, Harmonious, and Spontaneous",
+    "Description": "One truly free. You exude sexual power whether or not you know it. Fluid and free, you are the envy of many.",
+    "SiblingType": ["IHS", "CRS", "CHD"],
+    "Examples": "In Braven, the Charmer persona is a CHS who chose Prestige as their Prime Stat."
+  },
+  "IRD": {
+    "Title": "Innovative, Resolute, and Deliberate",
+    "Description": "A fearsome individual. You are meticulous, demanding, and intense. You could build a universe with your mind.",
+    "SiblingType": ["CRD", "IHD", "IRS"],
+    "Examples": "In Braven, the Synergist persona is an IRD who chose Nerve as their Prime Stat. Alternatively, the Vicar persona is also an IRD but they chose Prestige as their Prime Stat."
+  },
+  "IRS": {
+    "Title": "Innovative, Resolute, and Spontaneous",
+    "Description": "The cleverest being. You are brilliant, unpredictable, and utterly unique. Ideas mean everything to you.",
+    "SiblingType": ["CRS", "IHS", "IRD"],
+    "Examples": "In Braven, the Spellslinger persona is an IHS who chose Wits as their Prime Stat, replacing the stat Grace with Wits for Missile/Thrown."
+  },
+  "CRD": {
+    "Title": "Conventional, Resolute, and Deliberate",
+    "Description": "A ferocious entity. You stick to your values with a burning ambition. Many fear to challenge your will.",
+    "SiblingType": ["IRD", "CHD", "CRS"],
+    "Examples": "In Braven, the Fighter persona is a CRD who chose Prowess as their Prime Stat."
+  },
+  "CRS": {
+    "Title": "Conventional, Resolute, and Spontaneous",
+    "Description": "The adaptable one, a real survivor. Nothing can hold you back or keep you down. You always improvise and overcome.",
+    "SiblingType": ["IRS", "CHS", "CRD"],
+    "Examples": "In Braven, the Specialist persona is a CRS who chose Grace as their Prime Stat."
+  }
+}
