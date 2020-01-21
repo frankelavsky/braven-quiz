@@ -19,21 +19,23 @@
         />
       </div>
     </form>
-    <div class="progress">
-      <span>({{Math.round((page / totalPages)*1000)/10}}% finished with the quiz.)</span>
-      <div class="gauge-background">
-        <div
-          v-bind:style="{width:Math.round((page / totalPages)*1000)/10 + '%'}"
-          class="gauge-fill"
-        ></div>
-      </div>
-    </div>
+    <Bar
+      v-bind:current="page"
+      v-bind:outOf="totalPages"
+      message=" finished with the quiz."
+      class="progress"
+    ></Bar>
   </div>
 </template>
 
 <script>
+import Bar from "./Bar.vue";
+
 export default {
   name: "Panel",
+  components: {
+    Bar
+  },
   props: {
     question: {
       default: "",
