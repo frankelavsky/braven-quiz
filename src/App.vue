@@ -24,7 +24,7 @@
         <h3>Deliberate (D) versus Spontaneous (S)</h3>
         <p>This spectrum is your aversion to order.</p>
         <p>
-          <br />In the end, you'll get an explanation of your results, some tips, and an acronym that represents one the 8 possible outcomes from this quiz. That acronym is your TTRPG personality! Feel free to say things like "Yeah I'm kind of an IHD myself" (or whatever floats your boat).
+          <br />In the end, you'll get an explanation of your results, some tips, and an acronym that represents one of the 8 possible outcomes from this quiz. That acronym is your TTRPG personality! Feel free to say things like "Yeah I'm kind of an IHD myself" (or whatever floats your boat).
         </p>
         <p>
           <br />There are 8 possible outcomes, but if you tie or get close, the quiz results will suggest other acronyms to look at. As mentioned previously, if you want to know more you can check out our
