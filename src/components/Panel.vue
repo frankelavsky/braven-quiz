@@ -81,8 +81,6 @@ export default {
     }
   },
   created() {
-    // eslint-disable-next-line no-console
-    console.log("we have loaded", this.results, this.options);
     this.setFreshSlate(this.options);
   },
   methods: {
