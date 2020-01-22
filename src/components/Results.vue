@@ -15,7 +15,7 @@
     </div>
     <h2 class="breakdown-heading">Bottom Traits</h2>
     <p>(Tips for things to look out for)</p>
-    <div v-for="bottom in topTraits" v-bind:key="bottom.trait">
+    <div v-for="bottom in topTraits" v-bind:key="pairing[bottom.trait]">
       <h3>{{fullNames[pairing[bottom.trait]]+": " + ranks[pairing[bottom.trait]].value}}</h3>
       <Bar
         v-bind:current="results[pairing[bottom.trait]]"
@@ -24,14 +24,23 @@
       <p class="trait-explanation">{{traitResults[pairing[bottom.trait]]}}</p>
     </div>
     <h2 class="breakdown-heading">Sibling Personalities</h2>
-    <p>(Personalities you are similar to.)</p>
-    <div v-for="bottom in topTraits" v-bind:key="bottom.trait">
-      <h3>{{fullNames[pairing[bottom.trait]]+": " + ranks[pairing[bottom.trait]].value}}</h3>
+    <p>(Personalities you might be similar to.)</p>
+    <div v-for="similarType in type.simiarities" v-bind:key="similarType.name">
+      <h3>{{similarType.name}}</h3>
+      <p
+        class="description"
+      >{{similarType.name}} stands for {{descriptions[similarType.name].Title}}.</p>
       <Bar
-        v-bind:current="results[pairing[bottom.trait]]"
-        v-bind:outOf="ranks[pairing[bottom.trait]].pairTotal"
+        v-bind:current="similarType.score"
+        v-bind:outOf="similarType.pairScore"
+        message=" similarity."
       ></Bar>
-      <p class="trait-explanation">{{traitResults[pairing[bottom.trait]]}}</p>
+      <p class="trait-explanation">
+        <a
+          v-bind:href="similarType.searchParams"
+          target="_blank"
+        >Check out the {{similarType.name}} Personality.</a>
+      </p>
     </div>
     <h2 class="breakdown-heading">Caveats</h2>
     <p>This personality system isn't perfect, of course. But the purpose of it is to provide a way for the Host (or DM) of your group to help you find a good role in your party, like a casting director would for a part in a movie or play. Both you and your teammates will be happiest if you are set up to play the best version of yourself possible. And a lot of that actually means working well with your teammates! Ask them their personality, see what they think of it, and let them know yours. It's a great way to break the ice too, if you are new to a group or playing a one-shot with unfamiliar folks.</p>
@@ -40,7 +49,7 @@
 
 <script>
 import Bar from "./Bar.vue";
-import Descriptions from "../assets/descriptions.json";
+import DescriptionsJSON from "../assets/descriptions.json";
 import ResultsJSON from "../assets/results.json";
 
 export default {
@@ -83,10 +92,15 @@ export default {
       fullNames: {
         type: Object,
         default: () => {}
+      },
+      descriptions: {
+        type: Object,
+        default: () => {}
       }
     };
   },
   created() {
+    this.descriptions = DescriptionsJSON;
     this.pairing = {
       C: "I",
       I: "C",
@@ -129,7 +143,7 @@ export default {
       name += traits[2].trait;
       this.compact = name;
       this.topTraits = traits;
-      this.type = Descriptions[this.compact];
+      this.type = this.descriptions[this.compact];
       const rankedTraits = {
         C: {},
         I: {},
@@ -159,18 +173,44 @@ export default {
         }
       });
       this.ranks = rankedTraits;
-      // this.traits.forEach(trait=>{
-
-      // })
-      // this.type.similarities = {}
-
-      // eslint-disable-next-line no-console
-      console.log(
-        this.compact,
-        this.topTraits,
-        this.results,
-        this.ranks,
-        Descriptions
+      const similarPersonalities = [];
+      let i = 0;
+      this.topTraits.forEach(traitObject => {
+        const trait = traitObject.trait;
+        const item = {
+          searchParams:
+            window.location.protocol +
+            "//" +
+            window.location.host +
+            window.location.pathname +
+            "?",
+          name:
+            this.compact.substr(0, i) +
+            this.pairing[trait] +
+            this.compact.substr(i + 1),
+          differentTrait: this.fullNames[this.pairing[trait]],
+          score: this.results[this.pairing[trait]],
+          pairScore: this.results[trait],
+          trait: this.pairing[trait]
+        };
+        let j = 0;
+        for (j = 0; j < 3; j++) {
+          item.searchParams += item.name[j] + "=33&";
+        }
+        for (j = 0; j < 3; j++) {
+          // search over opposites
+          item.searchParams += this.pairing[item.name[j]] + "=";
+          if (j + 1 < 3) {
+            item.searchParams += "8&";
+          } else {
+            item.searchParams += "9";
+          }
+        }
+        similarPersonalities.push(item);
+        i++;
+      });
+      this.type.simiarities = similarPersonalities.sort(
+        (a, b) => b.score / b.pairScore - a.score / a.pairScore
       );
     }
   }
