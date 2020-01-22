@@ -3,23 +3,55 @@
     <h1>Braven's TTRPG Personality Quiz</h1>
     <p
       class="description"
-    >Wouldn't it be awesome to know what kind of personality you have when you play a tabletop role-playing game? This quiz can help you learn more about yourself and your teammates, so that you can become an amazing party together.</p>
+    >Wouldn't it be awesome to know what kind of personality you have when you play a tabletop role-playing game? This quiz can help you become an amazing player, expand what types of characters you play well, and even improve your teamwork in a party.</p>
     <div class="main-content-wrapper">
-      <div v-if="resultsReady">
-        <Results v-bind:results="aggregatedResults"></Results>
+      <div v-if="explanation" class="main-explainer">
+        <h2>Braven's Personality System</h2>
+        <p>
+          In Braven, part of making a character involves taking a personality quiz. This helps players learn more about themselves at the table but also helps them learn what their teammates are like too. Choosing your personality is hard.
+          <a
+            href="https://bravengames.wordpress.com/2019/12/13/picking-your-personality/"
+            target="_blank"
+          >We write about this, if you want to know more in-depth</a>.
+        </p>
+        <p>
+          <br />In short: there are three spectrums we quiz across (outlined below). And before I explain these, just know: all personalities are valid! And in fact, a good party has a mix of personalities that play well off of each others strengths and weaknesses. "Aversion" to something is not bad. I really hope to state that clearly before you dig in!
+        </p>
+        <h3>Innovative (I) versus Conventional (C)</h3>
+        <p>This spectrum is your aversion to risk.</p>
+        <h3>Resolute (R) versus Harmonious (H)</h3>
+        <p>This spectrum is your aversion to interpersonal conflict.</p>
+        <h3>Deliberate (D) versus Spontaneous (S)</h3>
+        <p>This spectrum is your aversion to order.</p>
+        <p>
+          <br />In the end, you'll get an explanation of your results, some tips, and an acronym that represents one the 8 possible outcomes from this quiz. That acronym your TTRPG personality! Feel free to say things like "Yeah I'm kind of an IHD myself" (or whatever floats your boat).
+        </p>
+        <p>
+          <br />There are 8 possible outcomes, but if you tie or get close, the quiz results will suggest other acronyms to look at. As mentioned previously, if you want to know more you can check out our
+          <a
+            href="https://bravengames.wordpress.com/2019/12/13/picking-your-personality/"
+            target="_blank"
+          >blog post</a>. Otherwise, you can just
+        </p>
+        <button v-on:click="next">Begin the quiz!</button>
       </div>
-      <Panel
-        v-else
-        v-bind:page="currentPage"
-        v-bind:totalPages="shuffledQuestions.length"
-        v-bind:options="shuffledQuestions[currentPage].options"
-        v-bind:question="shuffledQuestions[currentPage].question"
-        v-bind:points="shuffledQuestions[currentPage].points"
-        v-bind:previousResults="pageResults[currentPage] || {}"
-        @ready="readyNext"
-        @notReady="disableNext"
-        @submitToNext="next"
-      />
+      <div v-else>
+        <div v-if="resultsReady">
+          <Results v-bind:results="aggregatedResults"></Results>
+        </div>
+        <Panel
+          v-else
+          v-bind:page="currentPage"
+          v-bind:totalPages="shuffledQuestions.length"
+          v-bind:options="shuffledQuestions[currentPage].options"
+          v-bind:question="shuffledQuestions[currentPage].question"
+          v-bind:points="shuffledQuestions[currentPage].points"
+          v-bind:previousResults="pageResults[currentPage] || {}"
+          @ready="readyNext"
+          @notReady="disableNext"
+          @submitToNext="next"
+        />
+      </div>
     </div>
     <div class="footer">
       <div v-if="resultsReady" class="button-wrapper">
@@ -27,26 +59,39 @@
           Not the results you are looking for?
           <a
             v-bind:href="pageSource"
+            class="light"
             target="_blank"
           >Take the test</a>
         </span>
       </div>
       <div v-else class="button-wrapper">
-        <button v-on:click="currentPage--" v-bind:disabled="!currentPage">Back</button>
+        <button
+          v-on:click="back"
+          v-bind:disabled="!(!explanation || currentPage)"
+        >{{!explanation && !currentPage ? "Back to Explanation" : "Back"}}</button>
         <button
           v-on:click="next"
           v-bind:disabled="!nextReady"
-        >{{currentPage === shuffledQuestions.length-1 ? "SUBMIT" : "Next"}}</button>
+        >{{currentPage === shuffledQuestions.length-1 ? "SUBMIT" : explanation ? "Begin the quiz!" : "Next"}}</button>
       </div>
       <div class="learn-more">
         We don't steal, store, or sell any data when you visit us (and never will).
         <a
+          class="light"
           href="https://github.com/frankelavsky/braven-quiz"
           target="_blank"
         >The code for this quiz is open source.</a>
         <br />Like this?
-        <a href="https://paypal.me/FrankElavsky" target="_blank">Buy me a coffee</a> or
-        <a href="https://bravengames.wordpress.com/" target="_blank">follow our blog</a> to learn more about Braven, our Tabletop Roleplaying Game.
+        <a
+          class="light"
+          href="https://paypal.me/FrankElavsky"
+          target="_blank"
+        >Buy me a coffee</a> or
+        <a
+          class="light"
+          href="https://bravengames.wordpress.com/"
+          target="_blank"
+        >follow our blog</a> to learn more about Braven, our tabletop roleplaying game.
       </div>
     </div>
   </div>
@@ -68,8 +113,9 @@ export default {
       shuffledQuestions: [],
       currentPage: 0,
       pageResults: {},
-      nextReady: false,
+      nextReady: true,
       resultsReady: false,
+      explanation: true,
       aggregatedResults: {},
       pageSource: "/" // window.location.protocol + window.location.host + window.location.pathname
     };
@@ -100,8 +146,19 @@ export default {
       // disable next button
       this.nextReady = false;
     },
+    back() {
+      if (!this.explanation && !this.currentPage) {
+        this.explanation = true;
+        this.nextReady = true;
+      } else {
+        this.currentPage--;
+      }
+    },
     next() {
-      if (
+      if (this.explanation) {
+        this.explanation = false;
+        this.nextReady = false;
+      } else if (
         this.currentPage < this.shuffledQuestions.length - 1 &&
         this.nextReady
       ) {
@@ -113,6 +170,7 @@ export default {
         const userConfirmation = this.warnUserNoGoingBack();
         if (userConfirmation) {
           this.createAggregatedResults();
+          this.prepURLParams();
         }
       }
     },
@@ -124,12 +182,6 @@ export default {
         R: 0,
         S: 0,
         D: 0
-        // I: 11,
-        // C: 2,
-        // H: 9,
-        // R: 6,
-        // S: 6,
-        // D: 6
       };
       Object.keys(this.pageResults).forEach(key => {
         Object.keys(this.pageResults[key]).forEach(trait => {
@@ -138,9 +190,6 @@ export default {
       });
       this.resultsReady = true;
       this.aggregatedResults = newResults;
-      this.prepURLParams();
-      // eslint-disable-next-line no-console
-      console.log("PREPPED results", this.aggregatedResults);
     },
     warnUserNoGoingBack() {
       return confirm(
@@ -170,11 +219,10 @@ export default {
         entryPoints += +entry[1];
         urlResults[entry[0]] = +entry[1];
       });
-      // eslint-disable-next-line no-console
-      console.log("entrypoints now ", entryPoints, totalPoints, urlResults);
       if (entryPoints !== totalPoints) {
         window.location.search = "";
       } else {
+        this.explanation = false;
         this.resultsReady = true;
         this.aggregatedResults = urlResults;
       }
@@ -196,7 +244,7 @@ export default {
 h1,
 h2,
 button,
-.option-iniput,
+.option-input,
 .points {
   font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
   font-weight: 900;
@@ -207,7 +255,7 @@ h3 {
   margin-block-start: 1vw;
 }
 h1 {
-  font-size: 3vw;
+  font-size: 3.3vw;
 }
 h2 {
   font-size: 2.6vw;
@@ -226,7 +274,8 @@ p {
   padding: 0vw 10vw 0vw 10vw;
 }
 .panel,
-.results {
+.results,
+.main-explainer {
   margin: 3vw 10vw;
   padding: 2vw;
 }
@@ -238,7 +287,8 @@ p {
   margin-bottom: 10vw;
 }
 .panel,
-.results {
+.results,
+.main-explainer {
   background: #eeeeee;
   border-radius: 2vw;
 }
@@ -321,9 +371,15 @@ p {
   padding-top: 2vw;
 }
 a {
-  color: #00c3ff;
+  color: #006dac;
 }
 a:visited {
+  color: #94007c;
+}
+a.light {
+  color: #00c3ff;
+}
+a.light:visited {
   color: #ff97ee;
 }
 </style>
