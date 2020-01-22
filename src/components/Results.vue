@@ -195,15 +195,19 @@ export default {
         };
         let j = 0;
         for (j = 0; j < 3; j++) {
-          item.searchParams += item.name[j] + "=33&";
+          if (j + 1 < 3) {
+            item.searchParams += item.name[j] + "=41&";
+          } else {
+            item.searchParams += item.name[j] + "=42&";
+          }
         }
         for (j = 0; j < 3; j++) {
           // search over opposites
           item.searchParams += this.pairing[item.name[j]] + "=";
           if (j + 1 < 3) {
-            item.searchParams += "8&";
+            item.searchParams += "0&";
           } else {
-            item.searchParams += "9";
+            item.searchParams += "0";
           }
         }
         similarPersonalities.push(item);
