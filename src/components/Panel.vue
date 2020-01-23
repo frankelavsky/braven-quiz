@@ -120,19 +120,24 @@ export default {
       let value = inputValue;
       if (value < 0) {
         value = 0;
-        element.value = 0;
       } else if (value - this.results[trait] > this.count) {
         value = this.results[trait] + this.count;
-        element.value = this.results[trait] + this.count;
       }
-      this.results[trait] = value;
+      this.results[trait] = value === "" ? value : +value;
+      element.value = this.results[trait];
+
       let remaining = this.points;
       Object.keys(this.results).forEach(key => {
         remaining -= this.results[key];
       });
       this.count = remaining;
+
       if (this.count === 0) {
-        this.$emit("ready", { results: { ...this.results }, page: this.page });
+        const numberedResults = {};
+        Object.keys(this.results).forEach(key => {
+          numberedResults[key] = +this.results[key];
+        });
+        this.$emit("ready", { results: numberedResults, page: this.page });
       }
     }
   }
