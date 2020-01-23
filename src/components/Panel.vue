@@ -118,12 +118,12 @@ export default {
     },
     calculateCount(element, inputValue, trait) {
       let value = inputValue;
-      if (value < 0) {
+      if (+value < 0) {
         value = 0;
-      } else if (value - this.results[trait] > this.count) {
+      } else if (+value - +this.results[trait] > this.count) {
         value = this.results[trait] + this.count;
       }
-      this.results[trait] = value === "" ? value : +value;
+      this.results[trait] = value === "" ? value : Math.round(+value);
       element.value = this.results[trait];
 
       let remaining = this.points;
