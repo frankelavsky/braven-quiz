@@ -6,6 +6,8 @@
     <p>{{type.Description}}</p>
     <h3>Example Persona in Braven</h3>
     <p>{{type.Examples}}</p>
+    <h3>Guess what?</h3>
+    <p>You can share these results using the URL above or even bookmark this page for later! ;)</p>
     <h2 class="breakdown-heading">Top Traits</h2>
     <p>(What you're great at)</p>
     <div v-for="top in topTraits" v-bind:key="top.trait">
