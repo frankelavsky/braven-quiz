@@ -232,14 +232,98 @@ export default {
 </script>
 
 <style>
+@media all and (min-width: 340px) {
+  :root {
+    --small-spacing: 1vw;
+    --moderate-spacing: 3vw;
+    --large-spacing: 5vw;
+    --footer-spacing: 26vw;
+    --font-small: 3vw;
+    --font-regular: 3.3vw;
+    --font-emphasized: 3.5vw;
+    --font-button: 3.8vw;
+    --font-h2: 3.8vw;
+    --font-h1: 4.2vw;
+  }
+}
+@media all and (min-width: 480px) {
+  :root {
+    --small-spacing: 1vw;
+    --moderate-spacing: 3vw;
+    --large-spacing: 5vw;
+    --footer-spacing: 26vw;
+    --font-small: 3vw;
+    --font-regular: 3.3vw;
+    --font-emphasized: 3.5vw;
+    --font-button: 3.8vw;
+    --font-h2: 3.8vw;
+    --font-h1: 4.2vw;
+  }
+}
+@media all and (min-width: 768px) {
+  :root {
+    --small-spacing: 0.75vw;
+    --moderate-spacing: 2.25vw;
+    --large-spacing: 7vw;
+    --footer-spacing: 22vw;
+    --font-small: 2.5vw;
+    --font-regular: 2.8vw;
+    --font-emphasized: 3vw;
+    --font-button: 3.3vw;
+    --font-h2: 3.3vw;
+    --font-h1: 3.7vw;
+  }
+}
+@media all and (min-width: 1200px) {
+  :root {
+    --small-spacing: 0.5vw;
+    --moderate-spacing: 1.5vw;
+    --large-spacing: 12vw;
+    --footer-spacing: 18vw;
+    --font-small: 1.8vw;
+    --font-regular: 2vw;
+    --font-emphasized: 2.3vw;
+    --font-button: 2.3vw;
+    --font-h2: 2.8vw;
+    --font-h1: 3.2vw;
+  }
+}
+@media all and (min-width: 1440px) {
+  :root {
+    --small-spacing: 0.3vw;
+    --moderate-spacing: 1vw;
+    --large-spacing: 16vw;
+    --footer-spacing: 10vw;
+    --font-small: 1.4vw;
+    --font-regular: 1.6vw;
+    --font-emphasized: 1.8vw;
+    --font-button: 1.8vw;
+    --font-h2: 2.4vw;
+    --font-h1: 3vw;
+  }
+}
+@media all and (min-width: 1920px) {
+  :root {
+    --small-spacing: 0.3vw;
+    --moderate-spacing: 1vw;
+    --large-spacing: 20vw;
+    --footer-spacing: 8vw;
+    --font-small: 1.2vw;
+    --font-regular: 1.4vw;
+    --font-emphasized: 1.6vw;
+    --font-button: 1.6vw;
+    --font-h2: 2.4vw;
+    --font-h1: 3vw;
+  }
+}
 #App {
   font-family: "Vesper Libre", serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #313131;
-  margin-top: 2vw;
-  font-size: 1.6vw;
+  margin-top: calc(var(--small-spacing) * 2);
+  font-size: var(--font-regular);
 }
 h1,
 h2,
@@ -252,13 +336,13 @@ button,
 h3 {
   font-family: "Montserrat", "Avenir", Helvetica, Arial, sans-serif;
   font-weight: 300;
-  margin-block-start: 1vw;
+  margin-block-start: var(--small-spacing);
 }
 h1 {
-  font-size: 3.3vw;
+  font-size: var(--font-h1);
 }
 h2 {
-  font-size: 2.6vw;
+  font-size: var(--font-h2);
 }
 h2,
 p {
@@ -271,48 +355,51 @@ p {
   margin-block-end: 0;
 }
 .description {
-  padding: 0vw 10vw 0vw 10vw;
+  padding: 0vw var(--large-spacing) 0vw var(--large-spacing);
 }
 .panel,
 .results,
 .main-explainer {
-  margin: 3vw 10vw;
-  padding: 2vw;
+  margin: var(--moderate-spacing) var(--large-spacing);
+  padding: calc(var(--small-spacing) * 2);
 }
 .button-wrapper {
-  margin: 0 10vw;
-  padding: 1vw 2vw;
+  margin: 0 var(--large-spacing);
+  padding: var(--small-spacing) calc(var(--small-spacing) * 2);
 }
 .main-content-wrapper {
-  margin-bottom: 10vw;
+  margin-bottom: var(--footer-spacing);
+}
+.options-table {
+  width: 100%;
 }
 .panel,
 .results,
 .main-explainer {
   background: #eeeeee;
-  border-radius: 2vw;
+  border-radius: calc(var(--small-spacing) * 2);
 }
 .remaining-points {
-  padding-bottom: 1vw;
+  padding-bottom: var(--small-spacing);
   color: #747474;
 }
 .points {
   color: #313131;
-  font-size: 1.8vw;
+  font-size: var(--font-emphasized);
 }
 .gauge-background {
-  height: 20px;
+  height: calc(var(--small-spacing) * 2);
   width: 100%;
   position: relative;
-  border-radius: 10px;
+  border-radius: var(--small-spacing);
   background: white;
 }
 .gauge-fill {
   background: #959595;
   left: 0;
-  height: 20px;
+  height: calc(var(--small-spacing) * 2);
   position: relative;
-  border-radius: 10px 0px 0px 10px;
+  border-radius: var(--small-spacing) 0vw 0vw var(--small-spacing);
 }
 .footer {
   width: 100%;
@@ -328,12 +415,11 @@ button {
   color: #ffffff;
   background: #0f63ff;
   font-family: "Vesper Libre", serif;
-  font-size: 2vw;
-  line-height: 2.6vw;
-  border-radius: 1vw;
-  width: 37vw;
+  font-size: var(--font-button);
+  border-radius: var(--small-spacing);
+  width: calc(46vw - var(--large-spacing));
   padding: 0px;
-  padding-top: 0.65vw;
+  padding-top: calc(var(--small-spacing) / 2);
 }
 button:disabled,
 button[disabled] {
@@ -341,34 +427,41 @@ button[disabled] {
   background: #eeeeee;
 }
 .progress {
-  padding-top: 1vw;
+  padding-top: var(--small-spacing);
 }
 .bar {
   color: #747474;
 }
+.input-cell {
+  width: 20%;
+  padding: calc(var(--small-spacing) * 1.5) 0;
+}
 .option-input {
-  width: 3vw;
-  height: 2vw;
+  width: 50%;
+  height: var(--moderate-spacing);
   color: #313131;
-  font-size: 1.8vw;
-  padding: 0.2vw 0.5vw;
-  margin-left: 1.5vw;
-  border-radius: 0.5vw;
+  font-size: var(--font-emphasized);
+  padding: calc(var(--small-spacing) * 2);
+  border-radius: calc(var(--small-spacing) / 2);
 }
 .learn-more {
-  padding: 0vw 10vw;
+  padding: 0vw var(--large-spacing);
+}
+.option-text {
+  text-align: right;
+  line-height: calc(var(--font-regular) * 1.5);
 }
 .description,
 .learn-more,
 p {
-  line-height: 1.8vw;
-  font-size: 1.2vw;
+  line-height: calc(var(--font-small) * 1.5);
+  font-size: var(--font-small);
 }
 .trait-explanation {
-  padding: 1vw 0vw 1vw 0vw;
+  padding: var(--small-spacing) 0vw var(--small-spacing) 0vw;
 }
 .breakdown-heading {
-  padding-top: 2vw;
+  padding-top: calc(var(--small-spacing) * 2);
 }
 a {
   color: #006dac;
