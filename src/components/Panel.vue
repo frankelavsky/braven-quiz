@@ -7,17 +7,22 @@
     </div>
     <form v-on:submit.prevent="submit()">
       <input type="submit" style="display: none" />
-      <div v-for="option in options" v-bind:key="option.trait" class="option">
-        <span class="option-text">{{option.text}}</span>
-        <input
-          v-on:input="calculateCount($event.target,$event.target.value,option.trait)"
-          v-bind:max="points"
-          v-bind:value="results[option.trait] ? results[option.trait] : previousResults[option.trait] ? previousResults[option.trait] : 0"
-          class="option-input"
-          type="number"
-          min="0"
-        />
-      </div>
+      <table class="options-table">
+        <tr v-for="(option, index) in options" v-bind:key="option.trait" class="option">
+          <td class="option-text">{{option.text}}</td>
+          <td class="input-cell">
+            <input
+              v-on:input="calculateCount($event.target,$event.target.value,option.trait)"
+              v-bind:max="points"
+              v-bind:value="results[option.trait] ? results[option.trait] : previousResults[option.trait] ? previousResults[option.trait] : 0"
+              v-bind:ref="'input'+index"
+              class="option-input"
+              type="number"
+              min="0"
+            />
+          </td>
+        </tr>
+      </table>
     </form>
     <Bar
       v-bind:current="page"
@@ -87,6 +92,9 @@ export default {
     submit() {
       this.$emit("submitToNext");
     },
+    focusFirstInput() {
+      this.$refs.input0[0].focus();
+    },
     setFreshSlate(optionsArray) {
       if (!Object.keys(this.previousResults).length) {
         this.count = this.points;
@@ -104,6 +112,9 @@ export default {
           page: this.page
         });
       }
+      this.$nextTick(() => {
+        this.focusFirstInput();
+      });
     },
     calculateCount(element, inputValue, trait) {
       let value = inputValue;
