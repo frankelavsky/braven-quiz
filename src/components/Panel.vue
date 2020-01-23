@@ -14,7 +14,7 @@
             <input
               v-on:input="calculateCount($event.target,$event.target.value,option.trait)"
               v-bind:max="points"
-              v-bind:value="results[option.trait] ? results[option.trait] : previousResults[option.trait] ? previousResults[option.trait] : 0"
+              v-bind:value="results[option.trait] || results[option.trait] === 0 || results[option.trait] === '' ? results[option.trait] : previousResults[option.trait] ? previousResults[option.trait] : 0"
               v-bind:ref="'input'+index"
               class="option-input"
               type="number"
@@ -125,7 +125,7 @@ export default {
         value = this.results[trait] + this.count;
         element.value = this.results[trait] + this.count;
       }
-      this.results[trait] = +value;
+      this.results[trait] = value;
       let remaining = this.points;
       Object.keys(this.results).forEach(key => {
         remaining -= this.results[key];
