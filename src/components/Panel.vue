@@ -138,6 +138,8 @@ export default {
           numberedResults[key] = +this.results[key];
         });
         this.$emit("ready", { results: numberedResults, page: this.page });
+      } else {
+        this.$emit("notReady");
       }
     }
   }
